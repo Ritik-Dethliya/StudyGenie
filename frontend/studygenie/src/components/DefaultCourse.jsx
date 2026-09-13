@@ -1,3 +1,15 @@
+import styled from "styled-components";
+
+const DefaultCourseContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  // max-width: calc(100% - 250px); /* Adjust this value based on the width of your sidebar */
+  height: calc(100vh - 60px); /* Adjust this value based on the height of your navbar */
+  overflow-y: auto;
+  border: 1px solid red;
+  transistion: left 0.4s ease;
+`;
+
 function DefaultCourse() {
     const courses = [
   {
@@ -42,21 +54,19 @@ function DefaultCourse() {
   }
 ];
     return (  
-        <>
-            <div className="flex flex-wrap my-70">
-                {courses.length>0 && 
-                    courses.map((course,ind)=>{
-                        return(
-                            <div key={ind} className="p-2 shadow-lg w-full sm:w-full md:w-1/2 lg:w-1/3">
-                                <h1 className="font-bold ">{course.title}</h1>
-                                <img src={course.image} alt="" className="w-full"/>
-                                <p>{course.description}</p>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </>
+      <DefaultCourseContainer>
+          {courses.length > 0 && 
+              courses.map((course,ind)=>{
+                  return(
+                      <div key={ind} className="p-2 shadow-lg w-full sm:w-full md:w-1/2 lg:w-1/3">
+                          <h1 className="font-bold ">{course.title}</h1>
+                          <img src={course.image} alt="" className="w-full"/>
+                          <p>{course.description}</p>
+                      </div>
+                  )
+              })
+          }
+      </DefaultCourseContainer>
     );
 }
 

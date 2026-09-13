@@ -4,7 +4,10 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaUserPlus,FaComments } from "react-icons/fa";
 import "../Style/NavBar.css";
 import { NavLink } from "react-router-dom";
-function NavBar() {
+function NavBar({
+    onSearchChange = () => {},
+    onSidebarToggle = () => {},
+}) {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
         <nav className="navbar">
@@ -20,7 +23,12 @@ function NavBar() {
 
             {/* Navigation Icons */}
             <div className={`nav-right ${menuOpen ? "open" : ""}`}>
-                <NavLink to='/home'><FiHome className="nav-icon" /></NavLink>
+                <NavLink 
+                    // to='/home'
+                    onClick={onSidebarToggle}
+                >  
+                    <FiHome className="nav-icon" />
+                </NavLink>
                 <NavLink to="/uploadpost/"><FiEdit className="nav-icon" /></NavLink>
                 <NavLink to='/profile/'><FiUser className="nav-icon" /></NavLink> 
                 <NavLink to='/aichat'><FiCpu className="nav-icon"/></NavLink>
